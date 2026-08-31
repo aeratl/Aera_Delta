@@ -1,69 +1,48 @@
-import Image from "next/image";
+import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+import HeroSection from '@/components/sections/HeroSection'
+import MarqueeStrip from '@/components/sections/MarqueeStrip'
 
-export default function Home() {
+const PartnerStrip         = dynamic(() => import('@/components/sections/PartnerStrip'))
+const MissionSection       = dynamic(() => import('@/components/sections/MissionSection'))
+const PillarsSection       = dynamic(() => import('@/components/sections/PillarsSection'))
+const StatsSection         = dynamic(() => import('@/components/sections/StatsSection'))
+const JourneyTimeline      = dynamic(() => import('@/components/sections/JourneyTimeline'))
+const EventsSection        = dynamic(() => import('@/components/sections/EventsSection'))
+const MarketplacePreview   = dynamic(() => import('@/components/sections/MarketplacePreview'))
+const TestimonialsCarousel = dynamic(() => import('@/components/sections/TestimonialsCarousel'))
+const FaqSection           = dynamic(() => import('@/components/sections/FaqSection'))
+const JoinSection          = dynamic(() => import('@/components/sections/JoinSection'))
+
+export const metadata: Metadata = {
+  title: 'Aera Delta — Where Builders Become Founders.',
+  description:
+    'Aera Delta is an open innovation community for students, developers, designers, researchers, and creators to connect, build, and ship.',
+  openGraph: {
+    title: 'Aera Delta — Where Builders Become Founders.',
+    description:
+      'The open innovation community. Talk. Freelance. Build. Launch. Collaborate.',
+    images: [{ url: '/og/home.png', width: 1200, height: 630 }],
+  },
+  twitter: { card: 'summary_large_image' },
+  alternates: { canonical: 'https://aeradelta.com' },
+}
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <>
+      <HeroSection />
+      <MarqueeStrip />
+      <PartnerStrip />
+      <MissionSection />
+      <PillarsSection />
+      <StatsSection />
+      <JourneyTimeline />
+      <EventsSection />
+      <MarketplacePreview />
+      <TestimonialsCarousel />
+      <FaqSection />
+      <JoinSection />
+    </>
+  )
 }

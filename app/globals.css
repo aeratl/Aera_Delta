@@ -1,26 +1,145 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-zinc-950: #0A0A0A;
+  --color-zinc-900: #1A1A1A;
+  --color-zinc-800: #333333;
+  --color-zinc-500: #888888;
+  --color-zinc-300: #D4D4D4;
+  --color-zinc-200: #e0e0e0;
+  --color-border: rgba(255,255,255,0.1);
+  --color-input: rgba(255,255,255,0.15);
+  --color-ring: rgba(255,255,255,0.5);
+  --color-muted: #1A1A1A;
+  --color-muted-foreground: #888888;
+  --color-primary: #ffffff;
+  --color-primary-foreground: #000000;
+  --color-secondary: #1A1A1A;
+  --color-secondary-foreground: #ffffff;
+  --color-card: rgba(255,255,255,0.05);
+  --color-card-foreground: #ffffff;
+  --color-destructive: #888888;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-montserrat), 'Montserrat', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html {
+    @apply font-sans;
+    overflow-x: hidden;
+  }
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ── Intro screen animations ─────────────────────────────────────────────── */
+@keyframes revealUp {
+  0%   { transform: translateY(120%); opacity: 0; }
+  100% { transform: translateY(0%);   opacity: 1; }
+}
+
+@keyframes introFadeOut {
+  0%   { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden;  }
+}
+
+/* ── Shimmer sweep — apply to any button/link ────────────────────────────── */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* ── Animated underline for nav links ────────────────────────────────────── */
+.nav-link-line {
+  position: relative;
+}
+.nav-link-line::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link-line:hover::after,
+.nav-link-line:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ── Subtle float animation (for icon containers etc.) ───────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ── Glow pulse ring ─────────────────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0); }
+  50%       { box-shadow: 0 0 0 6px rgba(255,255,255,0.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after { display: none; }
+  .nav-link-line::after { display: none; }
 }
