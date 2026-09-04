@@ -6,17 +6,24 @@ import { motion } from 'framer-motion'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import StaggerChildren from '@/components/ui/StaggerChildren'
 import { fadeUpVariants } from '@/lib/motion'
-import { EVENTS } from '@/lib/constants'
+import { useData } from '@/lib/data-context'
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  try {
+    return new Date(iso).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  } catch {
+    return iso
+  }
 }
 
 export default function EventsSection() {
+  const { events } = useData()
+  const displayEvents = events.slice(0, 3)
+
   return (
     <section className="bg-[#0A0A0A] py-16 md:py-32 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
@@ -35,7 +42,7 @@ export default function EventsSection() {
           </Link>
         </ScrollReveal>
 
-        {EVENTS.length === 0 ? (
+        {displayEvents.length === 0 ? (
           <div className="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12 text-center flex flex-col items-center justify-center gap-4">
             <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-zinc-400 mb-2">
               <Calendar size={20} />
@@ -57,7 +64,7 @@ export default function EventsSection() {
           <>
             {/* Mobile: horizontal scroll */}
             <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
-              {EVENTS.map((event) => (
+              {displayEvents.map((event) => (
                 <div
                   key={event.slug}
                   className="snap-start flex-shrink-0 w-72 rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-4"
@@ -79,8 +86,8 @@ export default function EventsSection() {
                     </div>
                   </div>
                   <Link
-                    href={`/events/${event.slug}`}
-                    className="mt-auto text-xs uppercase tracking-[0.2em] bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white text-center min-h-[44px] flex items-center justify-center"
+                    href="/events"
+                    className="mt-auto text-xs uppercase tracking-[0.2em] bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors duration-200 text-center min-h-[44px] flex items-center justify-center"
                   >
                     View Event
                   </Link>
@@ -90,11 +97,15 @@ export default function EventsSection() {
 
             {/* Desktop: 3-col staggered grid */}
             <StaggerChildren className="hidden md:grid md:grid-cols-3 gap-6">
-              {EVENTS.map((event) => (
+              {displayEvents.map((event) => (
                 <motion.div
                   key={event.slug}
                   variants={fadeUpVariants}
-                  whileHover={{ y: -6, boxShadow: '0 0 0 1px rgba(255,255,255,0.25), 0 12px 40px rgba(255,255,255,0.05)' }}
+                  whileHover={{
+                    y: -6,
+                    boxShadow:
+                      '0 0 0 1px rgba(255,255,255,0.25), 0 12px 40px rgba(255,255,255,0.05)',
+                  }}
                   transition={{ type: 'spring', stiffness: 300, damping: 28 }}
                   className="group rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-4 hover:border-white/20 transition-colors duration-300"
                 >
@@ -115,8 +126,8 @@ export default function EventsSection() {
                     </div>
                   </div>
                   <Link
-                    href={`/events/${event.slug}`}
-                    className="mt-auto text-xs uppercase tracking-[0.2em] bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white text-center min-h-[44px] flex items-center justify-center"
+                    href="/events"
+                    className="mt-auto text-xs uppercase tracking-[0.2em] bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors duration-200 text-center min-h-[44px] flex items-center justify-center"
                   >
                     View Event
                   </Link>

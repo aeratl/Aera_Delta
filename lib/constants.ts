@@ -40,8 +40,7 @@ export const PILLARS: Pillar[] = [
   {
     id: 'talk',
     title: 'Talk',
-    description:
-      'Join topic-based discussion rooms, ask questions, and share knowledge with builders who get it. From late-night debugging sessions to design critiques — real conversations, no noise.',
+    description: 'Topic rooms for builders. Real conversations, zero noise.',
     icon: MessageSquare,
     href: '/talk',
     wide: true,
@@ -49,32 +48,28 @@ export const PILLARS: Pillar[] = [
   {
     id: 'freelance',
     title: 'Freelance',
-    description:
-      'Offer your skills or find the right person for your project. A marketplace for real gigs — from logo design to full-stack builds — with a community that actually ships.',
+    description: 'Find gigs or hire talent — from design to full-stack.',
     icon: Briefcase,
     href: '/freelance',
   },
   {
     id: 'events',
     title: 'Host Events',
-    description:
-      'Create and manage hackathons, workshops, meetups, and demo days with built-in RSVP and check-in tools. Bring the community together around what matters.',
+    description: 'Run hackathons, workshops, and demo days with built-in RSVP.',
     icon: Calendar,
     href: '/events',
   },
   {
     id: 'marketplace',
     title: 'Sell',
-    description:
-      'Showcase and sell what you have built — from digital products to merch to software — directly to a community that buys from builders they trust.',
+    description: 'Sell digital products directly to builders who trust you.',
     icon: ShoppingBag,
     href: '/marketplace',
   },
   {
     id: 'launch',
     title: 'Launch',
-    description:
-      'Announce your project or startup to an audience that cares. Get visibility, early users, and honest feedback the day you go live.',
+    description: 'Ship your project and get real feedback from day one.',
     icon: Rocket,
     href: '/launch',
     wide: true,
@@ -82,8 +77,7 @@ export const PILLARS: Pillar[] = [
   {
     id: 'collaborate',
     title: 'Collaborate',
-    description:
-      'Post what you are building and match with teammates by skill and interest. Finding your co-founder or first contributor should not feel like a job board.',
+    description: 'Find co-founders and contributors matched by skill.',
     icon: Users,
     href: '/collaborate',
   },

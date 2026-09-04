@@ -1,9 +1,12 @@
-import { MARQUEE_LABELS } from '@/lib/constants'
+'use client'
+
+import { useData } from '@/lib/data-context'
 
 const SEPARATOR = '◇'
 
 export default function MarqueeStrip() {
-  const items = MARQUEE_LABELS.flatMap((label) => [label, SEPARATOR])
+  const { marquee } = useData()
+  const items = marquee.flatMap((label) => [label, SEPARATOR])
 
   return (
     <div
@@ -25,7 +28,7 @@ export default function MarqueeStrip() {
             {item}
           </span>
         ))}
-        {/* Duplicate for seamless loop — aria-hidden so screen readers skip */}
+        {/* Duplicate for seamless loop */}
         {items.map((item, i) => (
           <span
             key={`b-${i}`}

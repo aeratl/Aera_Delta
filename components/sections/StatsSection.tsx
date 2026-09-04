@@ -1,8 +1,12 @@
+'use client'
+
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import { STATS } from '@/lib/constants'
+import { useData } from '@/lib/data-context'
 
 export default function StatsSection() {
+  const { stats } = useData()
+
   return (
     <section className="bg-[#0A0A0A] border-y border-white/10 py-16 md:py-24 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
@@ -16,7 +20,7 @@ export default function StatsSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
-          {STATS.map((stat, i) => (
+          {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.1}>
               <AnimatedCounter
                 target={stat.target}

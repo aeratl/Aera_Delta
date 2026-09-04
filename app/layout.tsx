@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import { MotionConfig } from 'framer-motion'
+import { Providers } from '@/components/providers'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
 import IntroScreen from '@/components/ui/IntroScreen'
@@ -54,13 +54,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           Skip to main content
         </a>
 
-        <MotionConfig reducedMotion="user">
+        <Providers>
           <Navbar />
           <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
-        </MotionConfig>
+        </Providers>
       </body>
     </html>
   )
