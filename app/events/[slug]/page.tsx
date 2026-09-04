@@ -4,6 +4,9 @@ import { notFound } from 'next/navigation'
 import { EVENTS } from '@/lib/constants'
 
 export async function generateStaticParams() {
+  if (EVENTS.length === 0) {
+    return [{ slug: 'preview' }]
+  }
   return EVENTS.map((e) => ({ slug: e.slug }))
 }
 

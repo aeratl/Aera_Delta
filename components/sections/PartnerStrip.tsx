@@ -6,9 +6,6 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 
 const PARTNERS = [
   { name: 'Aera TechLabs', abbr: 'ATL', logo: '/logos/aera-techlabs.png' },
-  { name: 'Partner Two', abbr: 'P2', logo: '/logos/partner-two.png' },
-  { name: 'Partner Three', abbr: 'P3', logo: '/logos/partner-three.png' },
-  { name: 'Partner Four', abbr: 'P4', logo: '/logos/partner-four.png' },
 ]
 
 interface PartnerLogoProps {

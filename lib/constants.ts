@@ -98,10 +98,10 @@ export type Stat = {
 }
 
 export const STATS: Stat[] = [
-  { label: 'Members', target: 2000, suffix: '+' },
-  { label: 'Projects Launched', target: 150, suffix: '+' },
-  { label: 'Events Hosted', target: 80, suffix: '+' },
-  { label: 'Freelance Gigs Completed', target: 500, suffix: '+' },
+  { label: 'Members', target: 0, suffix: '' },
+  { label: 'Projects Launched', target: 0, suffix: '' },
+  { label: 'Events Hosted', target: 0, suffix: '' },
+  { label: 'Freelance Gigs Completed', target: 0, suffix: '' },
 ]
 
 // ─── Events ────────────────────────────────────────────────────────────────────
@@ -115,35 +115,7 @@ export type Event = {
   description: string
 }
 
-export const EVENTS: Event[] = [
-  {
-    slug: 'builders-hackathon-2026',
-    title: 'Builders Hackathon 2026',
-    date: '2026-08-12',
-    location: 'Online',
-    category: 'Hackathon',
-    description:
-      '48 hours. One problem. Unlimited builders. Join teams from across the community and ship something real — hardware, software, or anything in between.',
-  },
-  {
-    slug: 'design-sprint-workshop',
-    title: 'Design Sprint Workshop',
-    date: '2026-07-18',
-    location: 'Online',
-    category: 'Workshop',
-    description:
-      'A hands-on 3-hour sprint through the Google Design Sprint methodology. Bring a problem, leave with a tested prototype and a sharper intuition for product thinking.',
-  },
-  {
-    slug: 'product-demo-day-mumbai',
-    title: 'Product Demo Day — Mumbai',
-    date: '2026-09-05',
-    location: 'Mumbai',
-    category: 'Demo Day',
-    description:
-      'Five minutes on stage. No pitch decks required. Show the community what you have been building and get direct feedback from founders, designers, and engineers in the room.',
-  },
-]
+export const EVENTS: Event[] = []
 
 // ─── Marketplace Items ─────────────────────────────────────────────────────────
 
@@ -156,40 +128,7 @@ export type MarketplaceItem = {
   imageAlt: string
 }
 
-export const MARKETPLACE_ITEMS: MarketplaceItem[] = [
-  {
-    slug: 'minimal-portfolio-template',
-    title: 'Minimal Portfolio Template',
-    creator: 'Riya Nair',
-    category: 'Design',
-    price: 299,
-    imageAlt: 'Minimal portfolio website template preview',
-  },
-  {
-    slug: 'next-js-saas-starter',
-    title: 'Next.js SaaS Starter',
-    creator: 'Arjun Mehta',
-    category: 'Code',
-    price: 'Free',
-    imageAlt: 'Next.js SaaS boilerplate starter kit',
-  },
-  {
-    slug: 'brand-identity-kit',
-    title: 'Brand Identity Kit',
-    creator: 'Priya Sharma',
-    category: 'Design',
-    price: 599,
-    imageAlt: 'Complete brand identity kit with logo guidelines',
-  },
-  {
-    slug: 'notion-project-os',
-    title: 'Notion Project OS',
-    creator: 'Kiran Patel',
-    category: 'Productivity',
-    price: 149,
-    imageAlt: 'Notion project management operating system template',
-  },
-]
+export const MARKETPLACE_ITEMS: MarketplaceItem[] = []
 
 // ─── Testimonials ──────────────────────────────────────────────────────────────
 
@@ -200,29 +139,7 @@ export type Testimonial = {
   initial: string
 }
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      'Aera Delta is where I found my first freelance client and my co-founder. I was not looking for either — I just showed up to a demo day. That is the thing about this community: it compounds.',
-    name: 'Ananya Krishnan',
-    role: 'Student Developer',
-    initial: 'A',
-  },
-  {
-    quote:
-      'I launched my first design product on the Marketplace with zero marketing budget. Sold out in a week. The community here actually buys from people they know and trust.',
-    name: 'Devraj Iyer',
-    role: 'Freelance Designer',
-    initial: 'D',
-  },
-  {
-    quote:
-      'We used Aera Delta to run our early beta access. The quality of feedback from this community — designers, engineers, researchers all in one place — accelerated our roadmap by months.',
-    name: 'Meera Subramaniam',
-    role: 'Startup Founder',
-    initial: 'M',
-  },
-]
+export const TESTIMONIALS: Testimonial[] = []
 
 // ─── FAQ ───────────────────────────────────────────────────────────────────────
 

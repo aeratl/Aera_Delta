@@ -4,6 +4,9 @@ import { notFound } from 'next/navigation'
 import { MARKETPLACE_ITEMS } from '@/lib/constants'
 
 export async function generateStaticParams() {
+  if (MARKETPLACE_ITEMS.length === 0) {
+    return [{ slug: 'preview' }]
+  }
   return MARKETPLACE_ITEMS.map((i) => ({ slug: i.slug }))
 }
 

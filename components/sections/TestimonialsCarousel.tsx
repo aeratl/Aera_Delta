@@ -36,7 +36,25 @@ export default function TestimonialsCarousel() {
           </h2>
         </ScrollReveal>
 
-        {shouldReduce ? (
+        {TESTIMONIALS.length === 0 ? (
+          <div className="rounded-2xl border border-black/10 bg-black/5 p-8 md:p-12 text-center flex flex-col items-center justify-center gap-4">
+            <span className="text-[10px] uppercase tracking-[0.3em] bg-black text-white px-3 py-1 rounded-full font-[500]">
+              Early Access Cohort
+            </span>
+            <h3 className="text-2xl md:text-3xl font-[300] text-black uppercase tracking-[0.05em] max-w-lg">
+              Be one of the first to shape the community.
+            </h3>
+            <p className="text-zinc-600 text-sm max-w-md mx-auto leading-relaxed">
+              Aera Delta is building in the open. Join the founding group of builders, ship projects, and get your stories featured here.
+            </p>
+            <a
+              href="#join"
+              className="mt-2 text-xs uppercase tracking-[0.2em] bg-black text-white px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors duration-200 font-[500]"
+            >
+              Join Founding Builders
+            </a>
+          </div>
+        ) : shouldReduce ? (
           // Static stack for reduced motion
           <div className="flex flex-col gap-6">
             {TESTIMONIALS.map((t) => (
